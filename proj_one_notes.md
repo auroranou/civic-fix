@@ -1,8 +1,28 @@
-##Models: 
-1. Users
-2. Posts
-3. Messages
-4. Organizations
+##Models and attributes: 
+###Users:
+- name 
+- email
+- password
+
+###Posts:
+- user_id
+- title
+- description
+
+###Messages
+- user_id
+- mail_to
+- mail_from (= user email)
+- body
+
+###Organizations
+- org_name
+- email
+- phone
+- address
+- contact_name (optional)
+
+-----
 
 ##Associations:
 ###Users:
