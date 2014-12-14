@@ -41,5 +41,51 @@
 - Have many messages
 - Have many users, through messages
 
-##To Do:
-1. 
+-----
+
+##Views:
+1. Homepage (get)
+
+Links to sign up, log in
+Running feed of user-generated messages (PSAs)
+
+2. Sign up page (get, post)
+
+Form containing fields for name, email, password, password confirmation
+
+Redirect to user dashboard
+
+3. Log in page (get, post)
+
+Form containing fields for email, password
+
+Redirect to user dashboard
+
+4. User dashboard (get)
+
+Lists of all past messages and posts
+Links to post new PSA or write new message
+Link to log out
+
+5. Message form (get, post)
+
+Form containing fields for user email, receiver email, message body
+
+Redirect to user dashboard
+
+6. PSA form (get, post)
+
+Form containing fields for title, description
+
+Redirect to homepage
+
+7. Logout page
+
+Redirect to homepage
+
+
+
+
+
+
+
