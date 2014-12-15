@@ -23,7 +23,7 @@ end
 
 before do
 	@errors ||= []
-	@current_user = User.find_by(id: session[:user][:id])
+	# @current_user = User.find_by(id: session[:user])
 end
 
 get '/' do
@@ -43,7 +43,7 @@ post '/session/signup' do
 	user = User.new(name: @name, email: @email, password: @password, zipcode: @zipcode)
 
 	if user.save
-		session[:user][:id] = user.id
+		session[:user] = {id: user.id, email: @email}
 		redirect('/')
 	else
 		@user = user
@@ -59,7 +59,7 @@ post '/session/login' do
 	user = User.find_by(params[:email])
 
 	if user && user.authenticate(params[:password])
-		session[:user][:id] = user.id
+		session[:user] = {id: user.id, email: @email}
 		redirect('/')
 	else
 		@errors << "Invalid email or password. Please try again."

@@ -6,6 +6,6 @@ class Message < ActiveRecord::Base
 	validates :body, presence: true
 	validates :user_id, presence: true
 
-	belong_to :user
+	belongs_to :user
 	has_one :organization
 end
