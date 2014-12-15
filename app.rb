@@ -40,15 +40,17 @@ post '/session/signup' do
 	@zipcode = params[:zipcode]
 	@password = BCrypt::Password.create(params[:password])
 
-	user = User.new(name: @name, email: @email, password: @password, zipcode: @zipcode)
+	user = User.create(name: @name, email: @email, password: @password, zipcode: @zipcode)
 
-	if user.save
-		session[:user] = {id: user.id, email: @email}
-		redirect('/')
-	else
-		@user = user
-		erb :signup
-	end
+	p "User created!"
+
+	# if user.save
+	# 	session[:user] = {id: user.id, email: @email}
+	# 	redirect('/')
+	# else
+	# 	@user = user
+	# 	erb :signup
+	# end
 end
 
 get '/session/login' do
