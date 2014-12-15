@@ -39,12 +39,11 @@ post '/signup' do
   user = User.new(name: params["name"], email: params["email"], password: params["password"])
   if user.save
     session[:user_id] = user.id
-    redirect('/home/:user_id')
+    redirect('/home/#{session[:user_id]}')
   else
     @user = user
     erb :sign_up
   end
-end
 end
 
 get '/login' do
@@ -55,7 +54,7 @@ post 'login' do
 	user = User.find_by(email: params["email"])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect('/home/:user_id')
+    redirect('/home/#{session[:user_id]}')
   else
     @errors << "Invalid email or password. Try again!"
     erb :login
@@ -84,7 +83,7 @@ end
 post '/new_post/:user_id' do
 end
 
-get '/logout' do
+get '/logout' do 
 	session.clear
 	redirect('/')
 end
