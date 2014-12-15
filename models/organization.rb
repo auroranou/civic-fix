@@ -1,9 +1,13 @@
 class Organization < ActiveRecord::Base
-	validates :org_name, presence: true, uniqueness: true
-	validates :email, presence: true, format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ }
-	validates :phone, presence: true
+
+	validates :org_name, presence: true
+	validates :email, presence: true,
+		format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 	validates :address, presence: true
+	validates :phone, presence: true
 	validate :contact_name
 
+	has_many :messages
 	has_many :users, through: :messages
+
 end

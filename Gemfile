@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
+
 gem 'sinatra'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'pg'
-gem 'bcrypt'
+# gem 'bcrypt'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'pry'

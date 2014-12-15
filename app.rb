@@ -12,81 +12,62 @@ require_relative './config/environments.rb'
 enable :sessions
 
 helpers do
-  def current_user
-    @current_user || nil
-  end
+	def current_user
+		@current_user || nil
+	end
 
-  def current_user?
-    @current_user == nil ? false : true
-  end
+	def current_user?
+		@current_user == nil ? false : true
+	end
 end
 
 before do
-  @errors ||= []
-  # @current_user = User.find_by(id: session[:user][:id])
+	@errors ||= []
+	@current_user = User.find_by(id: session[:user][:id])
 end
 
-get '/' do 
-	@posts = Post.all
+get '/' do
 	erb :index
 end
 
-get '/signup' do
+get '/session/signup' do
 	erb :signup
 end
 
-post '/signup' do
-  user = User.new(name: params[:name], email: params[:email], password: params[:password])
-  if user.save
-    session[:user] = {id: user.id, email: user.email}
-    redirect('/home/#{session[:user][:id]}')
-  else
-    @user = user
-    erb :signup
-  end
+post '/session/signup' do
+	@name = params[:name]
+	@email = params[:email]
+	@zipcode = params[:zipcode]
+	@password = BCrypt::Password.create(params[:password])
+
+	user = User.new(name: @name, email: @email, password: @password, zipcode: @zipcode)
+
+	if user.save
+		session[:user][:id] = user.id
+		redirect('/')
+	else
+		@user = user
+		erb :signup
+	end
 end
 
-get '/login' do
+get '/session/login' do
 	erb :login
 end
 
-post '/login' do
-	user = User.find_by(email: params[:email])
-  if user && user.authenticate(params[:password])
-		session[:user] = {id: user.id, email: user.email}
-    redirect('/home/#{session[:user][:id]}')
-  else
-    @errors << "Invalid email or password. Try again!"
-    erb :login
-  end
+post '/session/login' do
+	user = User.find_by(params[:email])
+
+	if user && user.authenticate(params[:password])
+		session[:user][:id] = user.id
+		redirect('/')
+	else
+		@errors << "Invalid email or password. Please try again."
+		erb :login
+	end
 end
 
-get '/home/:user_id' do
-	@user_id = session[:user][:id]
-	@user_messages = Message.find_by(users_id: session[:user][:id])
-	@user_posts = Post.find_by(users_id: session[:user][:id])
-	erb :homepage
-end
-
-get '/new_message/:user_id' do
-	erb :new_message
-end
-
-post '/new_message/:user_id' do
-end
-
-get '/new_post/:user_id' do
-	erb :new_post
-end
-
-post '/new_post/:user_id' do
-	@user_id = session[:user][:id]
-
-end
-
-get '/logout' do 
+get '/session/logout' do
 	session.clear
 	redirect('/')
 end
-
-# binding.pry
