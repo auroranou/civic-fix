@@ -23,7 +23,7 @@ end
 
 before do
   @errors ||= []
-  @current_user = User.find_by(id: session[:user][:id])
+  # @current_user = User.find_by(id: session[:user][:id])
 end
 
 get '/' do 
@@ -63,8 +63,8 @@ end
 
 get '/home/:user_id' do
 	@user_id = session[:user][:id]
-	@user_messages = Message.find_by(users_id: session[:user])
-	@user_posts = Post.find_by(users_id: session[:user])
+	@user_messages = Message.find_by(users_id: session[:user][:id])
+	@user_posts = Post.find_by(users_id: session[:user][:id])
 	erb :homepage
 end
 
