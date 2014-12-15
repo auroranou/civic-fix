@@ -1,4 +1,4 @@
-require 'bcrypt'
+require "bcrypt"
 
 class User < ActiveRecord::Base
 
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	validates :name, presence: true
 	validates :email, presence: true, uniqueness: true
 	validates :password, presence: true
-	validates :password_confirmation, presence: true
+	# validates :password_confirmation, presence: true
 
 	# associations
 	has_many :posts

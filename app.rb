@@ -23,7 +23,7 @@ end
 
 before do
   @errors ||= []
-  @current_user = User.find_by(:id => session[:user_id])
+  @current_user = User.find_by(id: session[:user_id])
 end
 
 get '/' do 
@@ -36,7 +36,7 @@ get '/signup' do
 end
 
 post '/signup' do
-  user = User.new(name: params["name"], email: params["email"], password: params["password"])
+  user = User.new(name: params[:name], email: params[:email], password: params[:password])
   if user.save
     session[:user_id] = user.id
     redirect('/home/#{session[:user_id]}')
@@ -51,7 +51,7 @@ get '/login' do
 end
 
 post '/login' do
-	user = User.find_by(email: params["email"])
+	user = User.find_by(email: params[:email])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
     redirect('/home/#{session[:user_id]}')
