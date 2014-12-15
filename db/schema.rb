@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141214143134) do
   create_table "messages", force: true do |t|
     t.string   "mail_to",    null: false
     t.string   "mail_from",  null: false
+    t.string   "subject",    null: false
     t.text     "body",       null: false
     t.integer  "users_id"
     t.datetime "created_at"
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 20141214143134) do
     t.string   "org_name",     null: false
     t.string   "email",        null: false
     t.text     "address",      null: false
-    t.integer  "phone"
+    t.integer  "phone",        null: false
     t.string   "contact_name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -45,9 +46,8 @@ ActiveRecord::Schema.define(version: 20141214143134) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "email",                 null: false
-    t.string   "password",              null: false
-    t.string   "password_confirmation", null: false
+    t.string   "email",      null: false
+    t.string   "password",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
