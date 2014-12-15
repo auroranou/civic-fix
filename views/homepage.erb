@@ -1,11 +1,11 @@
 <a href="/">Home</a>
 
 <section class="messages">
-	<a href="/new_message/<%= @user_id %>">Write a new message</a>
+	<a href="/new_message/<%= @current_user.id %>">Write a new message</a>
 </section>
 
 <section class="posts">
-	<a href="/new_post/<%= @user_id %>">Post a new PSA</a>
+	<a href="/new_post/<%= @current_user.id %>">Post a new PSA</a>
 	<div> 
 		<% @user_posts.each do |p| %>
 			<%= p.title %>

@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'pony'
 require 'pry'
 
 require_relative './models/user.rb'
@@ -83,7 +84,6 @@ end
 # send a new message
 get '/new_message/:user_id' do
 	params["user_id"] = session[:user_id]
-	@user_id = session[:user_id]
 	erb :new_message
 end
 
@@ -93,7 +93,6 @@ end
 # write a new post
 get '/new_post/:user_id' do
 	params["user_id"] = session[:user_id]
-	@user_id = session[:user_id]
 	erb :new_post
 end
 
