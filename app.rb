@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-# require 'pry'
+require 'pry'
 
 require_relative './models/user.rb'
 require_relative './models/post.rb'
@@ -38,19 +38,17 @@ post '/session/signup' do
 	@name = params[:name]
 	@email = params[:email]
 	@zipcode = params[:zipcode]
-	@password = BCrypt::Password.create(params[:password])
+	@password = BCrypt::Password.create(params[:password_digest])
 
 	user = User.create(name: @name, email: @email, password: @password, zipcode: @zipcode)
 
-	p "User created!"
-
-	# if user.save
-	# 	session[:user] = {id: user.id, email: @email}
-	# 	redirect('/')
-	# else
-	# 	@user = user
-	# 	erb :signup
-	# end
+	if user.save
+		session[:user] = {id: user.id, email: @email}
+		redirect('/')
+	else
+		@user = user
+		erb :sign_up
+	end
 end
 
 get '/session/login' do

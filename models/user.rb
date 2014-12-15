@@ -2,7 +2,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
-	attr_accessor :name, :email, :password, :zipcode
+	attr_accessor :password
 
 	validates_presence_of :password, :on => :create
 	validates :name, presence: true
@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
 	has_many :messages
 	has_many :organizations, through: :messages
 
-	def authenticat(password)
-		if BCrypt::Password.new(self.password) == password
+	def authenticate(password)
+		if BCrypt::Password.new(self.password_digest) == password
 			return self
 		else
 			return nil
