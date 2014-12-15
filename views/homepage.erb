@@ -1,9 +1,16 @@
+<a href="/">Home</a>
+
 <section class="messages">
 	<a href="/new_message/<%= @user_id %>">Write a new message</a>
-	
 </section>
 
 <section class="posts">
 	<a href="/new_post/<%= @user_id %>">Post a new PSA</a>
-
+	<div> 
+		<% @user_posts.each do |p| %>
+			<%= p.title %>
+			<%= p.created_at %>
+			<%= p.description %>
+		<% end %>
+	</div>
 </section>

@@ -6,3 +6,9 @@
 </nav>
 
 <!-- Fluff blurb here -->
+
+<% @posts.each do |p| %>
+	<%= p.title %>
+	<%= p.created_at %>
+	<%= p.description %>
+<% end %>

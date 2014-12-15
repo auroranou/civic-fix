@@ -27,6 +27,7 @@ before do
 end
 
 get '/' do
+	@posts = Post.all
 	erb :index
 end
 
@@ -74,8 +75,8 @@ get '/home/:user_id' do
 	params["user_id"] = session[:user_id]
 	@user_id = session[:user_id]
 
-	@user_messages = Message.find_by(users_id: session[:user_id])
-	@user_posts = Post.find_by(users_id: session[:user_id])
+	# @user_messages = Message.find_by(users_id: session[:user_id])
+	@user_posts = Post.where(user_id: session[:user_id])
 	erb :homepage
 end
 
@@ -101,7 +102,7 @@ post '/new_post/:user_id' do
 	@post_desc = params[:description]
 	@user_id = session[:user_id].to_i
 
-	post = Post.create(title: @post_title, description: @post_desc, users_id: @user_id)
+	post = Post.create(title: @post_title, description: @post_desc, user_id: @user_id)
 	redirect("/home/#{session[:user_id]}")
 end
 
@@ -111,4 +112,4 @@ get '/session/logout' do
 	redirect('/')
 end
 
-binding.pry
+# binding.pry

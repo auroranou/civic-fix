@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141214143134) do
     t.string   "mail_from",  null: false
     t.string   "subject",    null: false
     t.text     "body",       null: false
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141214143134) do
   create_table "posts", force: true do |t|
     t.string   "title",       null: false
     t.text     "description", null: false
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
