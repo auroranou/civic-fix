@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'pry'
+# require 'pry'
 
 require_relative './models/user.rb'
 require_relative './models/post.rb'
@@ -39,28 +39,28 @@ post '/signup' do
   user = User.new(name: params["name"], email: params["email"], password: params["password"])
   if user.save
     session[:user_id] = user.id
-    redirect('/home/:user_id')
+    id = user.id
+    redirect('/home/id')
   else
     @user = user
-    erb :sign_up
+    erb :signup
   end
-end
 end
 
 get '/login' do
 	erb :login
 end
 
-post 'login' do
+post '/login' do
 	user = User.find_by(email: params["email"])
   if user && user.authenticate(params[:password])
     session[:user_id] = user.id
-    redirect('/home/:user_id')
+    id = user.id
+    redirect('/home/id')
   else
     @errors << "Invalid email or password. Try again!"
     erb :login
   end
-
 end
 
 get '/home/:user_id' do
@@ -82,9 +82,13 @@ get '/new_post/:user_id' do
 end
 
 post '/new_post/:user_id' do
+	@user_id = session[:user_id]
+
 end
 
 get '/logout' do
 	session.clear
 	redirect('/')
 end
+
+# binding.pry
