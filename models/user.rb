@@ -4,10 +4,11 @@ class User < ActiveRecord::Base
 
 	attr_accessor :password
 
+	before_save :encrypt_password
+
 	validates_presence_of :password, :on => :create
 	validates :name, presence: true
 	validates :email, presence: true,
-		uniqueness: { case_sensitive: false },
 		format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 	validates :zipcode, presence: true
 
@@ -23,4 +24,10 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def encrypt_password
+		if password.present?
+			return self.password_digest = BCrypt::Password.create(password)
+		end
+	end
+	
 end

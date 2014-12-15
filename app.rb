@@ -38,16 +38,16 @@ post '/session/signup' do
 	@name = params[:name]
 	@email = params[:email]
 	@zipcode = params[:zipcode]
-	@password = BCrypt::Password.create(params[:password_digest])
+	@password = params[:password]
 
-	user = User.create(name: @name, email: @email, password: @password, zipcode: @zipcode)
+	user = User.new(name: @name, email: @email, password: @password, zipcode: @zipcode)
 
 	if user.save
 		session[:user] = {id: user.id, email: @email}
 		redirect('/')
 	else
 		@user = user
-		erb :sign_up
+		erb :signup
 	end
 end
 
@@ -56,7 +56,7 @@ get '/session/login' do
 end
 
 post '/session/login' do
-	user = User.find_by(params[:email])
+	user = User.find_by(email: params[:email])
 
 	if user && user.authenticate(params[:password])
 		session[:user] = {id: user.id, email: @email}
