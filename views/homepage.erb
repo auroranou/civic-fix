@@ -1,8 +1,21 @@
 <section class="messages">
 	<a href="/new_message/<%= @user_id %>">Write a new message</a>
 	<div>
-		<% @user_messages.each do |m|
-			
+		<% @user_messages.each do |m| %>
+			<%= m.mail_to %>
+			<%= m.mail_from %>
+			<%= m.subject %>
+			<%= m.body %>
+		<% end %>
+	</div>
+</section>
+
+<section class="posts">
+	<a href="/new_post/<%= @user_id %>">Write a new message</a>
+	<div>
+		<% @user_posts.each do |p| %>
+			<%= p.title %>
+			<%= p.description %>
 		<% end %>
 	</div>
 </section>

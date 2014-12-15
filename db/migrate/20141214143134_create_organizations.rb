@@ -4,7 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration
   		t.string :org_name, null: false
   		t.string :email, null: false
   		t.text :address, null: false
-  		t.integer :phone
+  		t.integer :phone, null: false
   		t.string :contact_name
 
   		t.timestamps
