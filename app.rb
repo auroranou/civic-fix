@@ -30,6 +30,7 @@ get '/' do
 	erb :index
 end
 
+# user sign up
 get '/session/signup' do
 	erb :signup
 end
@@ -51,6 +52,7 @@ post '/session/signup' do
 	end
 end
 
+# user log in
 get '/session/login' do
 	erb :login
 end
@@ -67,28 +69,46 @@ post '/session/login' do
 	end
 end
 
+# user dashboard
 get '/home/:user_id' do
-	session[:user_id] = params["user_id"]
+	params["user_id"] = session[:user_id]
+	@user_id = session[:user_id]
+
 	@user_messages = Message.find_by(users_id: session[:user_id])
 	@user_posts = Post.find_by(users_id: session[:user_id])
 	erb :homepage
 end
 
+# send a new message
 get '/new_message/:user_id' do
+	params["user_id"] = session[:user_id]
+	@user_id = session[:user_id]
 	erb :new_message
 end
 
 post '/new_message/:user_id' do
 end
 
+# write a new post
 get '/new_post/:user_id' do
+	params["user_id"] = session[:user_id]
+	@user_id = session[:user_id]
 	erb :new_post
 end
 
 post '/new_post/:user_id' do
+	@post_title = params[:title]
+	@post_desc = params[:description]
+	@user_id = session[:user_id].to_i
+
+	post = Post.create(title: @post_title, description: @post_desc, users_id: @user_id)
+	redirect("/home/#{session[:user_id]}")
 end
 
+# log out
 get '/session/logout' do
 	session.clear
 	redirect('/')
 end
+
+binding.pry

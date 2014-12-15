@@ -5,7 +5,7 @@ class CreateMessages < ActiveRecord::Migration
   		t.string :mail_from, null: false
   		t.string :subject, null: false
   		t.text :body, null: false
-  		t.references :users
+  		t.references :user
 
   		t.timestamps
   	end
