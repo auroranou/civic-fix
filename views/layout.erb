@@ -9,26 +9,29 @@
 </head>
 
 <body>
-	<header>
-		<img src="">
+	<header class="clearfix">
+		<img src="/logo.png" alt="site logo" id="logo">
+		<h1><a href="/">Civic Fix</a></h1>
+		<% if @current_user == nil %>
 		<nav>
-			<% if @current_user == nil %>
-				<ul>
-					<li><a href="/session/signup">Sign Up</a></li>
-					<li><a href="/session/login">Log In</a></li>
-				</ul>
-			<% else %>
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/home/<%= @current_user.id %>">Dashboard</a></li>
-					<li><a href="/session/logout">Logout</a></li>
-				</ul>
-			<% end %>
+			<ul>
+				<li><a href="/session/signup">Sign Up</a></li>
+				<li><a href="/session/login">Log In</a></li>
+			</ul>
 		</nav>
+		<% else %>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/home/<%= @current_user.id %>">Dashboard</a></li>
+				<li><a href="/session/logout">Logout</a></li>
+			</ul>
+		</nav>
+		<% end %>
 	</header>
 
-	<div class="container">
-	<%= yield %>
+	<div class="clearfix" id="container">
+		<%= yield %>
 
 		<footer>
 			<ul>
@@ -37,7 +40,7 @@
 				<li>Logo courtesy of <a href="http://thenounproject.com/ramir2/">Jose Ramirez</a> via <a href="https://thenounproject.com">The Noun Project</a></li>
 			</ul>
 		</footer>
-	</div> <!-- Close container div -->
+	</div>
 </body>
 
 </html>

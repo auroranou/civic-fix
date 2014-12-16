@@ -1,7 +1,13 @@
-<!-- Fluff blurb here -->
+<div class="blurb">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis risus eget sem molestie euismod. Nunc ornare condimentum mi, nec posuere lacus ullamcorper quis. Proin posuere finibus sapien vel ultricies. Aliquam faucibus, mauris eleifend volutpat cursus, libero tortor viverra nisi, sed luctus ante lorem sit amet ex. Suspendisse a tellus turpis. Pellentesque vitae mattis massa. Ut eu eleifend nunc.
+</div>
 
-<% @posts.each do |p| %>
-	<%= p.title %>
-	<%= p.created_at %>
-	<%= p.description %>
-<% end %>
+<div>
+	<% @posts.each do |p| %>
+		<div class="post">
+			<h2><%= p.title %></h2>
+			<%= p.created_at %>
+			<div><%= p.description %></div>
+		</div>
+	<% end %>
+</div>

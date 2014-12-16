@@ -82,7 +82,7 @@ get '/home/:user_id' do
 	erb :homepage
 end
 
-# send a new message
+# messages
 get '/new_message/:user_id' do
 	params["user_id"] = session[:user_id]
 
@@ -111,7 +111,7 @@ post '/new_message/:user_id' do
 	redirect("/home/#{session[:user_id]}")
 end
 
-# write a new post
+# posts
 get '/new_post/:user_id' do
 	params["user_id"] = session[:user_id]
 	erb :new_post
@@ -124,6 +124,9 @@ post '/new_post/:user_id' do
 
 	post = Post.create(title: @post_title, description: @post_desc, user_id: @user_id)
 	redirect("/home/#{session[:user_id]}")
+end
+
+delete '/' do
 end
 
 # log out
