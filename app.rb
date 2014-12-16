@@ -121,8 +121,12 @@ put '/post/update/:post_id' do
 	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		update_post = Post.find_by(id: params["post_id"])
-		update_post.title = params[:title]
-		update_post.description = params[:description]
+		if params[:title] != nil
+			update_post.title = params[:title]
+		end
+		if params[:description] != nil
+			update_post.description = params[:description]
+		end
 		update_post.save
 		redirect('/home')
 	else
