@@ -1,6 +1,6 @@
 <section class="messages">
 	<div class="new">
-		<h2><a href="/new_message/<%= @current_user.id %>">Write a new message</a></h2>
+		<h2><a href="/message/new">Write a new message</a></h2>
 	</div>
 	<h2>Past messages:</h2>
 	<% @user_messages.each do |m| %>
@@ -16,7 +16,7 @@
 
 <section class="posts">
 	<div class="new">
-		<h2><a href="/new_post/<%= @current_user.id %>">Post a new PSA</a></h2>
+		<h2><a href="/post/new">Post a new PSA</a></h2>
 	</div> 
 	<h2>Past posts:</h2>
 	<% @user_posts.each do |p| %>
@@ -24,8 +24,8 @@
 			<div><strong><%= p.title %></strong></div>
 			<div><%= p.created_at %></div>
 			<div><%= p.description %></div>
-			<a href="/update/<%= p.id %>">Update this post</a>
-			<a href="/delete/<%= p.id %>">Delete this post</a>
+			<a href="/post/update/<%= p.id %>">Update this post</a>
+			<a href="/post/delete/<%= p.id %>">Delete this post</a>
 		</div>
 	<% end %>
 </section>

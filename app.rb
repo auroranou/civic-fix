@@ -39,16 +39,11 @@ get '/session/signup' do
 end
 
 post '/session/signup' do
-	@name = params[:name]
-	@email = params[:email]
-	@zipcode = params[:zipcode]
-	@password = params[:password]
-
-	user = User.new(name: @name, email: @email, password: @password, zipcode: @zipcode)
+	user = User.new(name: params[:name], email: params[:email], password: params[:password], zipcode: params[:zipcode])
 
 	if user.save
 		session[:user_id] = user.id
-		redirect("/home/#{session[:user_id]}")
+		redirect("/home")
 	else
 		@user = user
 		erb :signup
@@ -65,7 +60,7 @@ post '/session/login' do
 
 	if user && user.authenticate(params[:password])
 		session[:user_id] = user.id
-		redirect("/home/#{session[:user_id]}")
+		redirect("/home")
 	else
 		@errors << "Invalid email or password. Please try again."
 		erb :login
@@ -73,8 +68,7 @@ post '/session/login' do
 end
 
 # user dashboard
-get '/home/:user_id' do
-	params["user_id"] = session[:user_id]
+get '/home' do
 	@user_id = session[:user_id]
 
 	@user_messages = Message.where(user_id: session[:user_id])
@@ -83,14 +77,12 @@ get '/home/:user_id' do
 end
 
 # messages
-get '/new_message/:user_id' do
-	params["user_id"] = session[:user_id]
-
+get '/message/new' do
 	@actions = Organization.pluck(:action)
 	erb :new_message
 end
 
-post '/new_message/:user_id' do
+post '/message/new' do
 	@target_org = Organization.find_by(action: params[:action])
 
 	# Mail.new(
@@ -108,49 +100,45 @@ post '/new_message/:user_id' do
 		user_id: session[:user_id]
 	)	
 
-	redirect("/home/#{session[:user_id]}")
+	redirect("/home")
 end
 
 # posts
-get '/new_post/:user_id' do
-	params["user_id"] = session[:user_id]
+get '/post/new' do
 	erb :new_post
 end
 
-post '/new_post/:user_id' do
+post '/post/new' do
 	@post_title = params[:title]
 	@post_desc = params[:description]
 	@user_id = session[:user_id].to_i
 
 	post = Post.create(title: @post_title, description: @post_desc, user_id: @user_id)
-	redirect("/home/#{session[:user_id]}")
+	redirect("/home")
 end
 
-get '/update/:post_id' do
+get '/post/update/:post_id' do
 	@post_id = params["post_id"]
 	@post = Post.find_by(id: params["post_id"])
 	erb :update_post
 end
 
-put '/update/:post_id' do
+put '/post/update/:post_id' do
 	if @post.user_id == session[:user_id]
-		updated_title = params[:title]
-		updated_description = params[:description]
-		post_id = params["post_id"]
-
-		@post.title = @updated_title
-		@post.description = @updated_description
-		@post.save
+		update_post = Post.find_by(id: params["post_id"])
+		update_post.title = params[:title]
+		update_post.description = params[:description]
+		update_post.save
 	else
 		@errors << "You are not authorized to edit this post. Please sign in to try again."
 		redirect('/')
 	end
 end
 
-get '/delete/:post_id' do
+get '/post/delete' do
 end
 
-delete '/delete/:post_id' do
+delete '/post/delete' do
 end
 
 # log out
@@ -159,4 +147,4 @@ get '/session/logout' do
 	redirect('/')
 end
 
-binding.pry
+# binding.pry
