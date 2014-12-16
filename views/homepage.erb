@@ -1,7 +1,14 @@
-<a href="/">Home</a>
-
 <section class="messages">
 	<a href="/new_message/<%= @current_user.id %>">Write a new message</a>
+	<div>
+			<% @user_messages.each do |m| %>
+				To: <%= m.mail_to %>
+				From: <%= m.mail_from %>
+				Re: <%= m.subject %>
+				<%= m.created_at %>
+				<div class="textarea"><%= m.body %></div>
+			<% end %>
+	</div>
 </section>
 
 <section class="posts">
@@ -10,7 +17,7 @@
 		<% @user_posts.each do |p| %>
 			<%= p.title %>
 			<%= p.created_at %>
-			<%= p.description %>
+			<div class="textarea"><%= p.description %></div>
 		<% end %>
 	</div>
 </section>

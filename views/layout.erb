@@ -2,13 +2,42 @@
 <html>
 <head>
 	<title>THREE ONE FUN</title>
-	<link rel="stylesheet" type="text/css" href="../public/normalize.css">
-	<link rel="stylesheet" type="text/css" href="../public/style.css">
+	<link rel="stylesheet" type="text/css" href=href="<%= url("/normalize.css")%>">
+	<link rel="stylesheet" type="text/css" href="<%= url("/style.css")%>">
+	<link href='http://fonts.googleapis.com/css?family=Raleway:600,400' rel='stylesheet' type='text/css'>
 	<met charset="utf-8">
 </head>
 
 <body>
+	<header>
+		<img src="">
+		<nav>
+			<% if @current_user == nil %>
+				<ul>
+					<li><a href="/session/signup">Sign Up</a></li>
+					<li><a href="/session/login">Log In</a></li>
+				</ul>
+			<% else %>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/home/<%= @current_user.id %>">Dashboard</a></li>
+					<li><a href="/session/logout">Logout</a></li>
+				</ul>
+			<% end %>
+		</nav>
+	</header>
+
+	<div class="container">
 	<%= yield %>
+
+		<footer>
+			<ul>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+				<li>Logo courtesy of <a href="http://thenounproject.com/ramir2/">Jose Ramirez</a> via <a href="https://thenounproject.com">The Noun Project</a></li>
+			</ul>
+		</footer>
+	</div> <!-- Close container div -->
 </body>
 
 </html>

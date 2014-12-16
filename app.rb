@@ -77,7 +77,7 @@ get '/home/:user_id' do
 	params["user_id"] = session[:user_id]
 	@user_id = session[:user_id]
 
-	# @user_messages = Message.find_by(users_id: session[:user_id])
+	@user_messages = Message.where(user_id: session[:user_id])
 	@user_posts = Post.where(user_id: session[:user_id])
 	erb :homepage
 end
