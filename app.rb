@@ -69,8 +69,8 @@ end
 
 # user dashboard
 get '/home' do
-	@user_messages = Message.where(user_id: session[:user_id])
-	@user_posts = Post.where(user_id: session[:user_id])
+	@user_messages = Message.where(user_id: session[:user_id]).order(created_at: :desc)
+	@user_posts = Post.where(user_id: session[:user_id]).order(created_at: :desc)
 	erb :homepage
 end
 
@@ -119,10 +119,9 @@ end
 patch '/post/update/:post_id' do
 	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
-		update_post = Post.find_by(id: params["post_id"])
-		update_post.title = params[:title] if params[:title]
-		update_post.description = params[:description] if params[:description]
-		update_post.save
+		@post.title = "#{@post.title} - UPDATED"
+		@post.description = params[:description]
+		@post.save
 		redirect('/home')
 	else
 		@errors << "You are not authorized to edit this post. Please sign in to try again."
@@ -139,8 +138,7 @@ end
 delete '/post/delete/:post_id' do
 	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
-		delete_post = Post.find_by(id: params["post_id"])
-		delete_post.delete
+		@post.delete
 		redirect('/home')
 	else
 		@errors << "You are not authorized to delete this post. Please sign in to try again."

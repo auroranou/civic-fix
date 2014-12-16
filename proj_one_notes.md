@@ -84,7 +84,17 @@ Redirect to homepage
 Redirect to homepage
 
 
-
+-----
+TO DO
+X- show homepage feeds in order by most recent
+- change post update to update description only, add "UPDATED" to post title
+- show poster in index view
+- show follow up address, phone in messages feed
+- fix footer alignment
+- change textarea height
+- finish seeding organization database
+- deploy
+- integrate heroku mail add-on
 
 
 

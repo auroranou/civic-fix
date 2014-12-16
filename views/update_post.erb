@@ -1,12 +1,15 @@
-<h2>Here is your original post:</h2>
-<div><strong><%= @post.title %></strong></div>
-<div><%= @post.created_at %></div>
-<div><%= @post.description %></div>
+<section class="left_sec">
+	<h2>Here is your original post:</h2>
+	<div><strong><%= @post.title %></strong></div>
+	<div class="date"><%= @post.created_at %></div>
+	<div><%= @post.description %></div>
+</section>
 
-<h2>Submit your update below:</h2>
-<form action='/post/update/<%= @post_id %>' method='post'>
-	<input type="hidden" name="_method" value="patch">
-	<input type="text" name="title" placeholder="New Title">
-	<input type="text" name="description" placeholder="New Description">
-	<input type="submit" value="Update!">
-</form>
+<section class="right_sec">
+	<h2>Submit your update here:</h2>
+	<form action='/post/update/<%= @post_id %>' method='post'>
+		<input type="hidden" name="_method" value="patch">
+		<textarea name="description" placeholder="New Description"></textarea>
+		<input type="submit" value="Update!">
+	</form>
+</section>

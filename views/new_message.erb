@@ -1,12 +1,20 @@
-<form action='/message/new' method='post'>
-	<select name="action">
-		<% @actions.each do |a| %>
-			<option name ="action" value="<%= a %>"><%= a %></option>
-		<% end %>
-	</select>
+<section class="left_sec">
+	<h2>Please write your message here:</h2>
+</section>
 
-	<input type="email" name="mail_from" placeholder="Your email address">
-	<input type="text" name="subject" placeholder="Subject">
-	<div class="textarea"><input type="text" name="body" placeholder="Your message here."></div>
-	<input type="submit" value="Send!">
+<section class="right_sec">
+<form action='/message/new' method='post'>
+	<div>
+		<select name="action">
+			<% @actions.each do |a| %>
+				<option name ="action" value="<%= a %>"><%= a %></option>
+			<% end %>
+		</select>
+	</div>
+
+<input type="email" name="mail_from" placeholder="Your email address">
+<input type="text" name="subject" placeholder="Subject">
+<textarea name="body" placeholder="Your message here."></textarea>
+<input type="submit" value="Send!">
 </form>
+</section>

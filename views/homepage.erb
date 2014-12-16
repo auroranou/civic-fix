@@ -1,4 +1,4 @@
-<section class="messages">
+<section class="left_sec">
 	<div class="new">
 		<h2><a href="/message/new">Write a new message</a></h2>
 	</div>
@@ -8,13 +8,13 @@
 			<div><strong>To:</strong> <%= m.mail_to %></div>
 			<div><strong>From:</strong> <%= m.mail_from %></div>
 			<div><strong>Re: <%= m.subject %></strong></div>
-			<div><%= m.created_at %></div>
+			<div class="date"><%= m.created_at %></div>
 			<div><%= m.body %></div>
 		</div>
 	<% end %>
 </section>
 
-<section class="posts">
+<section class="right_sec">
 	<div class="new">
 		<h2><a href="/post/new">Post a new PSA</a></h2>
 	</div> 
@@ -22,7 +22,7 @@
 	<% @user_posts.each do |p| %>
 		<div class="post">
 			<div><strong><%= p.title %></strong></div>
-			<div><%= p.created_at %></div>
+			<div class="date"><%= p.created_at %></div>
 			<div><%= p.description %></div>
 			<a href="/post/update/<%= p.id %>">Update this post</a> | 
 			<a href="/post/delete/<%= p.id %>">Delete this post</a>

@@ -1,6 +1,6 @@
 <h2>Are you sure you want to delete this post?</h2>
 <div><strong><%= @post.title %></strong></div>
-<div><%= @post.created_at %></div>
+<div class="date"><%= @post.created_at %></div>
 <div><%= @post.description %></div>
 
 <form action='/post/delete/<%= @post_id %>' method='post'>
