@@ -24,6 +24,8 @@
 			<div><strong><%= p.title %></strong></div>
 			<div><%= p.created_at %></div>
 			<div><%= p.description %></div>
+			<a href="/update/<%= p.id %>">Update this post</a>
+			<a href="/delete/<%= p.id %>">Delete this post</a>
 		</div>
 	<% end %>
 </section>

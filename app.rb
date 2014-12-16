@@ -126,7 +126,17 @@ post '/new_post/:user_id' do
 	redirect("/home/#{session[:user_id]}")
 end
 
-delete '/' do
+get '/update/:post_id' do
+	erb :update_post
+end
+
+put '/update/:post_id' do
+end
+
+get '/delete/:post_id' do
+end
+
+delete '/delete/:post_id' do
 end
 
 # log out
