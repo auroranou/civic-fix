@@ -101,7 +101,7 @@ post '/new_message/:user_id' do
 	# ).deliver!
 
 	message = Message.create(
-		mail_to: @target_org.email, 
+		mail_to: @target_org.email,
 		mail_from: params[:mail_from], 
 		subject: params[:subject], 
 		body: params[:body], 

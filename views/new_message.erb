@@ -1,7 +1,7 @@
 <form action='/new_message/<%= @current_user.id %>' method='post'>
-	<select name="org_action">
+	<select name="action">
 		<% @actions.each do |a| %>
-			<option value="<%= a %>"><%= a %></option>
+			<option name ="action" value="<%= a %>"><%= a %></option>
 		<% end %>
 	</select>
 
