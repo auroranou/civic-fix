@@ -132,9 +132,21 @@ put '/post/update/:post_id' do
 end
 
 get '/post/delete/:post_id' do
+	@post_id = params["post_id"]
+	@post = Post.find_by(id: params["post_id"])
+	erb :delete_post
 end
 
 delete '/post/delete/:post_id' do
+	@post = Post.find_by(id: params["post_id"])
+	if @post.user_id == session[:user_id]
+		delete_post = Post.find_by(id: params["post_id"])
+		delete_post.delete
+		redirect('/home')
+	else
+		@errors << "You are not authorized to delete this post. Please sign in to try again."
+		redirect('/')
+	end
 end
 
 # log out
