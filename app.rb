@@ -127,10 +127,24 @@ post '/new_post/:user_id' do
 end
 
 get '/update/:post_id' do
+	@post_id = params["post_id"]
+	@post = Post.find_by(id: params["post_id"])
 	erb :update_post
 end
 
 put '/update/:post_id' do
+	if @post.user_id == session[:user_id]
+		updated_title = params[:title]
+		updated_description = params[:description]
+		post_id = params["post_id"]
+
+		@post.title = @updated_title
+		@post.description = @updated_description
+		@post.save
+	else
+		@errors << "You are not authorized to edit this post. Please sign in to try again."
+		redirect('/')
+	end
 end
 
 get '/delete/:post_id' do
