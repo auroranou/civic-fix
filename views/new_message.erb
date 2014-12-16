@@ -2,6 +2,7 @@
 	<select name="org_action">
 		<% @actions.each do |a| %>
 			<option value="<%= a %>"><%= a %></option>
+		<% end %>
 	</select>
 
 	<input type="email" name="mail_from" placeholder="Your email address">

@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'mail'
-# require 'pry'
+require 'pry'
 
 require_relative './models/user.rb'
 require_relative './models/post.rb'
@@ -85,21 +85,30 @@ end
 # send a new message
 get '/new_message/:user_id' do
 	params["user_id"] = session[:user_id]
+
+	@actions = Organization.pluck(:action)
 	erb :new_message
 end
 
 post '/new_message/:user_id' do
-	@actions = Organization.pluck(:action)
-
 	@target_org = Organization.find_by(action: params[:action])
 
-	Mail.new(
-		to: 'auroranou@gmail.com'
-		from: params[:mail_from]
-		subject: params[:subject]
-		body: params[:body]
-	).deliver!
+	# Mail.new(
+	# 	to: 'auroranou@gmail.com',
+	# 	from: params[:mail_from],
+	# 	subject: params[:subject],
+	# 	body: params[:body]
+	# ).deliver!
 
+	message = Message.create(
+		mail_to: @target_org.email, 
+		mail_from: params[:mail_from], 
+		subject: params[:subject], 
+		body: params[:body], 
+		user_id: session[:user_id]
+	)	
+
+	redirect("/home/#{session[:user_id]}")
 end
 
 # write a new post
@@ -123,4 +132,4 @@ get '/session/logout' do
 	redirect('/')
 end
 
-# binding.pry
+binding.pry
