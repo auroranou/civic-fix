@@ -69,7 +69,6 @@ end
 
 # user dashboard
 get '/home' do
-	@user_id = session[:user_id]
 	@user_messages = Message.where(user_id: session[:user_id])
 	@user_posts = Post.where(user_id: session[:user_id])
 	erb :homepage
@@ -117,16 +116,12 @@ get '/post/update/:post_id' do
 	erb :update_post
 end
 
-put '/post/update/:post_id' do
+patch '/post/update/:post_id' do
 	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		update_post = Post.find_by(id: params["post_id"])
-		if params[:title] != nil
-			update_post.title = params[:title]
-		end
-		if params[:description] != nil
-			update_post.description = params[:description]
-		end
+		update_post.title = params[:title] if params[:title]
+		update_post.description = params[:description] if params[:description]
 		update_post.save
 		redirect('/home')
 	else
