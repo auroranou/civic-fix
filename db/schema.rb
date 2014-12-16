@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141214143134) do
 
   create_table "organizations", force: true do |t|
     t.string   "org_name",     null: false
+    t.text     "action",       null: false
     t.string   "email",        null: false
     t.text     "address",      null: false
     t.integer  "phone",        null: false

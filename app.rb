@@ -1,12 +1,13 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'pony'
-require 'pry'
+require 'mail'
+# require 'pry'
 
 require_relative './models/user.rb'
 require_relative './models/post.rb'
 require_relative './models/message.rb'
 require_relative './models/organization.rb'
+require_relative './models/mail.rb'
 
 require_relative './config/environments.rb'
 
@@ -88,6 +89,17 @@ get '/new_message/:user_id' do
 end
 
 post '/new_message/:user_id' do
+	@actions = Organization.pluck(:action)
+
+	@target_org = Organization.find_by(action: params[:action])
+
+	Mail.new(
+		to: 'auroranou@gmail.com'
+		from: params[:mail_from]
+		subject: params[:subject]
+		body: params[:body]
+	).deliver!
+
 end
 
 # write a new post

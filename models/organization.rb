@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base
 
 	validates :org_name, presence: true
+	validates :action, presence: true
 	validates :email, presence: true,
 		format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 	validates :address, presence: true
