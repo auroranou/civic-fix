@@ -70,7 +70,6 @@ end
 # user dashboard
 get '/home' do
 	@user_id = session[:user_id]
-
 	@user_messages = Message.where(user_id: session[:user_id])
 	@user_posts = Post.where(user_id: session[:user_id])
 	erb :homepage
@@ -99,7 +98,6 @@ post '/message/new' do
 		body: params[:body], 
 		user_id: session[:user_id]
 	)	
-
 	redirect("/home")
 end
 
@@ -109,11 +107,7 @@ get '/post/new' do
 end
 
 post '/post/new' do
-	@post_title = params[:title]
-	@post_desc = params[:description]
-	@user_id = session[:user_id].to_i
-
-	post = Post.create(title: @post_title, description: @post_desc, user_id: @user_id)
+	post = Post.create(title: params[:title], description: params[:description], user_id: session[:user_id].to_i)
 	redirect("/home")
 end
 
@@ -124,21 +118,23 @@ get '/post/update/:post_id' do
 end
 
 put '/post/update/:post_id' do
+	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		update_post = Post.find_by(id: params["post_id"])
 		update_post.title = params[:title]
 		update_post.description = params[:description]
 		update_post.save
+		redirect('/home')
 	else
 		@errors << "You are not authorized to edit this post. Please sign in to try again."
 		redirect('/')
 	end
 end
 
-get '/post/delete' do
+get '/post/delete/:post_id' do
 end
 
-delete '/post/delete' do
+delete '/post/delete/:post_id' do
 end
 
 # log out
