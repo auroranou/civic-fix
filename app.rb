@@ -83,12 +83,12 @@ end
 post '/message/new' do
 	@target_org = Organization.find_by(action: params[:action])
 
-	# Mail.new(
-	# 	to: 'auroranou@gmail.com',
-	# 	from: params[:mail_from],
-	# 	subject: params[:subject],
-	# 	body: params[:body]
-	# ).deliver!
+	Mail.new(
+		to: 'auroranou@gmail.com',
+		from: params[:mail_from],
+		subject: params[:subject],
+		body: params[:body]
+	).deliver!
 
 	message = Message.create(
 		mail_to: @target_org.email,
@@ -172,12 +172,12 @@ get '/about' do
 end
 
 post '/about' do
-	# Mail.new(
-	# 	to: 'auroranou@gmail.com',
-	# 	from: params[:mail_from],
-	# 	subject: params[:subject],
-	# 	body: params[:body]
-	# ).deliver!
+	Mail.new(
+		to: 'auroranou@gmail.com',
+		from: params[:mail_from],
+		subject: params[:subject],
+		body: params[:body]
+	).deliver!
 end
 
 binding.pry
