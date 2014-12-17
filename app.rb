@@ -3,13 +3,13 @@ require 'sinatra/activerecord'
 require 'mail'
 # require 'pry'
 
-require_relative './models/user.rb'
-require_relative './models/post.rb'
-require_relative './models/message.rb'
-require_relative './models/organization.rb'
-require_relative './models/mail.rb'
+require_relative './models/user'
+require_relative './models/post'
+require_relative './models/message'
+require_relative './models/organization'
+require_relative './models/mail'
 
-require_relative './config/environments.rb'
+require_relative './config/environments'
 
 enable :sessions
 
