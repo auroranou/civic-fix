@@ -76,7 +76,7 @@ end
 
 # messages
 get '/message/new' do
-	@actions = Organization.pluck(:action)
+	@actions = Organization.order(:action).pluck(:action)
 	erb :new_message
 end
 
