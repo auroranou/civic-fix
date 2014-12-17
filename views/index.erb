@@ -8,7 +8,7 @@
 	<% @posts.each do |p| %>
 		<div class="post">
 			<h2><%= p.title %></h2>
-			<div class="date"><%= p.created_at %></div>
+			<div class="date"><%= p.created_at %> | Posted by <%= p.user.name %> from <%= p.user.zipcode %></div>
 			<p><%= p.description %></p>
 		</div>
 	<% end %>

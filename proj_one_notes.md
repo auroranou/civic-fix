@@ -88,16 +88,17 @@ Redirect to homepage
 TO DO
 X- show homepage feeds in order by most recent
 X- change post update to update description only, add "UPDATED" to post title
-- show poster in index view
+X- show poster in index view
 - show follow up address, phone in messages feed
 X- fix footer alignment
 X- change textarea height
 X- finish seeding organization database
 X- deploy
 X- integrate heroku mail add-on
-- change form width on sign in/log in
+X- change form width on sign in/log in
 - implement infinite scroll?
-- favicon
+X- favicon
+- error alerts
 
 
 

@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'mail'
-# require 'pry'
+require 'pry'
 
 require_relative './models/user'
 require_relative './models/post'
@@ -20,6 +20,10 @@ helpers do
 
 	def current_user?
 		@current_user == nil ? false : true
+	end
+
+	def message_contact
+		@organization = Organization.find_by(email: Message.mail_to)
 	end
 end
 
@@ -180,3 +184,4 @@ post '/about' do
 	).deliver!
 end
 
+binding.pry
