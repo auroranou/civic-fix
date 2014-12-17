@@ -93,15 +93,21 @@ footer{
 	border-radius: 5px;
 }
 
-.left_sec{
+section{
 	width: 440px;
+}
+
+.left_sec{
 	float: left;
 	margin-right: 20px;
 }
 
 .right_sec{
-	width: 440px;
 	float: left;
+}
+
+.center_sec{
+	margin: auto;
 }
 
 .date{
@@ -138,6 +144,11 @@ input[type=submit]{
 
 textarea{
 	height: 200px;
+}
+
+#delete{
+	background-color: #f2f2f2;
+	border: none;
 }
 
 .clearfix:after {

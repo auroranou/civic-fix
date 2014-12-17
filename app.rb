@@ -152,4 +152,4 @@ get '/session/logout' do
 	redirect('/')
 end
 
-# binding.pry
+binding.pry
