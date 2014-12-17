@@ -11,3 +11,6 @@ Mail.defaults do
     :enable_starttls_auto => true
   }
 end
+
+# app32603030@heroku.com
+# rnpibuym
