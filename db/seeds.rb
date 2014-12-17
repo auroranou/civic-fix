@@ -5,7 +5,7 @@ organizations = Organization.create([
 		email: "ddot@dc.gov",
 		address: "55 M Street, SE, Suite 400, Washington, DC 20003",
 		phone: 2026736813,
-		contact_name: 
+		contact_name: nil
 	},	
 	{
 		org_name: "Department of Public Works",
@@ -13,7 +13,7 @@ organizations = Organization.create([
 		email: "dpw@dc.gov",
 		address: "2000 14th Street, NW, Washington, DC 20009",
 		phone: 2026736833,
-		contact_name: 
+		contact_name: nil
 	},
 	{
 		org_name: "District of Columbia Office of Human Rights",
@@ -21,7 +21,7 @@ organizations = Organization.create([
 		email: "ohr@dc.gov",
 		address: "441 4th Street, NW, Suite 570N, Washington, DC 20001",
 		phone: 2027274559,
-		contact_name: 
+		contact_name: nil
 	},
 	{
 		org_name: "Office of the Tenant Advocate",
@@ -37,7 +37,7 @@ organizations = Organization.create([
 		email: "mpd@dc.gov",
 		address: "300 Indiana Avenue, NW, Room 5059, Washington, DC 20001",
 		phone: 2027273700,
-		contact_name: 
+		contact_name: nil
 	},
 	{
 		org_name: "DC Coalition Against Domestic Violence",
@@ -45,7 +45,7 @@ organizations = Organization.create([
 		email: "info@dccadv.org",
 		address: "5 Thomas Circle, Washington, DC 20005",
 		phone: 2022991181,
-		contact_name: 
+		contact_name: nil
 	},
 	{
 		org_name: "Office of Police Complaints",
