@@ -50,14 +50,14 @@ footer a{
 }
 
 .index:first-child p:first-letter{
-	font-size: 4.5em;
+	font-size: 3em;
 	height: 0.8em;
 	display: block;
 	float: left;
 	line-height: 1em;
 	font-weight: bold;
 	color: #E4523C;
-	margin-right: 20px
+	margin-right: 10px
 }
 
 p{
