@@ -13,6 +13,11 @@ body{
 	src: url('../public/Entypo-Social.ttf');
 }
 
+@font-face{
+	font-family: "Entypo";
+	src: url('../public/Entypo.ttf');
+}
+
 h1{
 	float: left;
 	margin: 0;
@@ -190,6 +195,12 @@ textarea{
 	margin: 0 auto;
 	padding: 0 20px;
 	letter-spacing: 0.4em;
+}
+
+.contact_icon{
+	font-family: "Entypo";
+	font-size: 1.5em;
+	letter-spacing: 0.5em;
 }
 
 .clearfix:after {

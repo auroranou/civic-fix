@@ -21,10 +21,6 @@ helpers do
 	def current_user?
 		@current_user == nil ? false : true
 	end
-
-	def message_contact
-		@organization = Organization.find_by(email: Message.mail_to)
-	end
 end
 
 before do

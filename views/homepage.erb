@@ -10,6 +10,15 @@
 			<div><strong>Re: <%= m.subject %></strong></div>
 			<div class="date"><%= m.created_at %></div>
 			<p><%= m.body %></p>
+			<hr>
+			<p>To follow up on this issue, contact:</p>
+			<div><strong><%= Organization.find_by(email: m.mail_to).org_name %></strong></div>
+			<div><span class="contact_icon">&#59172;</span>
+				<span><%= Organization.find_by(email: m.mail_to).address %></span>
+			</div>
+			<div><span class="contact_icon">&#128222;</span>
+				<span><%= Organization.find_by(email: m.mail_to).phone %></span>
+			</div>
 		</div>
 	<% end %>
 </section>
