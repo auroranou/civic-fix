@@ -8,6 +8,11 @@ body{
 	font-family: 'Raleway', 'Arial', sans-serif;
 }
 
+@font-face{
+	font-family: "Entypo Social";
+	src: url('../public/Entypo-Social.ttf');
+}
+
 h1{
 	float: left;
 	margin: 0;
@@ -31,8 +36,23 @@ header a, h2 a{
 	color: #fff;
 }
 
+footer a{
+	color: #666;
+}
+
 .index h2{
 	margin: 5px 0 0 0;
+}
+
+.index:first-child p:first-letter{
+	font-size: 4.5em;
+	height: 0.8em;
+	display: block;
+	float: left;
+	line-height: 1em;
+	font-weight: bold;
+	color: #E4523C;
+	margin-right: 20px
 }
 
 p{
@@ -71,8 +91,10 @@ li{
 
 footer{
 	clear: both;
+	width: 100%;
 	margin: auto;
 	text-align: center;
+	border-top: 1px solid #aaa;
 }
 
 #container{
@@ -128,7 +150,7 @@ form{
 	border-radius: 5px;
 }
 
-select, input, textarea{
+select, input, label, textarea{
 	display: block;
 	width: 400px;
 	margin: 15px auto;
@@ -139,7 +161,16 @@ input[type=submit]{
 	background-color: #141C22;
 	color: #fff;
 	border: none;
+	border-radius: 5px;
 	padding: 5px;
+}
+
+input[type=checkbox]{
+	width: 20px;
+}
+
+label{
+	text-align: center;
 }
 
 textarea{
@@ -149,6 +180,14 @@ textarea{
 #delete{
 	background-color: #f2f2f2;
 	border: none;
+}
+
+#about{
+	font-family: "Entypo Social";
+	font-size: 40px;
+	margin: 0 auto;
+	padding: 0 20px;
+	letter-spacing: 0.4em;
 }
 
 .clearfix:after {

@@ -152,4 +152,32 @@ get '/session/logout' do
 	redirect('/')
 end
 
+# manage user account
+get '/manage' do
+	erb :delete_user
+end
+
+delete '/manage' do
+	if @current_user && params[:delete]
+		@current_user.destroy
+	else
+		@errors << "You are not authorized to make changes to this account. Please sign in to try again."
+	end
+	redirect('/')
+end
+
+# about and contact
+get '/about' do
+	erb :about
+end
+
+post '/about' do
+	# Mail.new(
+	# 	to: 'auroranou@gmail.com',
+	# 	from: params[:mail_from],
+	# 	subject: params[:subject],
+	# 	body: params[:body]
+	# ).deliver!
+end
+
 binding.pry

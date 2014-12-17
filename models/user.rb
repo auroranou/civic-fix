@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
 		format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 	validates :zipcode, presence: true
 
-	has_many :posts
-	has_many :messages
+	has_many :posts, dependent: :destroy
+	has_many :messages, dependent: :destroy
 	has_many :organizations, through: :messages
 
 	def authenticate(password)

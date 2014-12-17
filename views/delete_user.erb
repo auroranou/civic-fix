@@ -1,0 +1,16 @@
+<section class="center_sec">
+	<h2>About your account:</h2>
+	<div><strong>Name: </strong><%= @current_user.name %></div>
+	<div><strong>Email: </strong><%= @current_user.email %></div>
+	<div><strong>Zip Code: </strong><%= @current_user.zipcode %></div>
+
+	<h2>Delete your account:</h2>
+	<p>Once deleted, your account--including your post and message histories--are gone forever. Are you sure you want to proceed?</p>
+
+	<form action="/manage" method="post" id="delete">
+		<input type="hidden" name="_method" value="delete">
+		<label>Yes, delete my account!</label>
+		<input type="checkbox" name="delete">
+		<input type="submit" value="Delete!">
+	</form>
+</section>
