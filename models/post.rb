@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
 
 	belongs_to :user
 
+	def posted_by
+
+	end
+
 end

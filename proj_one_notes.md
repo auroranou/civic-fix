@@ -92,10 +92,12 @@ X- change post update to update description only, add "UPDATED" to post title
 - show follow up address, phone in messages feed
 X- fix footer alignment
 X- change textarea height
-- finish seeding organization database
-- deploy
-- integrate heroku mail add-on
-
+X- finish seeding organization database
+X- deploy
+X- integrate heroku mail add-on
+- change form width on sign in/log in
+- implement infinite scroll?
+- favicon
 
 
 
