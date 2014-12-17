@@ -9,7 +9,7 @@
 			<div><strong>From:</strong> <%= m.mail_from %></div>
 			<div><strong>Re: <%= m.subject %></strong></div>
 			<div class="date"><%= m.created_at %></div>
-			<div><%= m.body %></div>
+			<p><%= m.body %></p>
 		</div>
 	<% end %>
 </section>
@@ -23,9 +23,9 @@
 		<div class="post">
 			<div><strong><%= p.title %></strong></div>
 			<div class="date"><%= p.created_at %></div>
-			<div><%= p.description %></div>
-			<a href="/post/update/<%= p.id %>">Update this post</a> | 
-			<a href="/post/delete/<%= p.id %>">Delete this post</a>
+			<p><%= p.description %></p>
+			<p><a href="/post/update/<%= p.id %>">Update this post</a> | 
+			<a href="/post/delete/<%= p.id %>">Delete this post</a></p>
 		</div>
 	<% end %>
 </section>

@@ -35,6 +35,10 @@ header a, h2 a{
 	margin: 0;
 }
 
+p{
+	line-height: 1.5em;
+}
+
 header{
 	width: 100%;
 	height: 110px;
@@ -55,34 +59,36 @@ nav{
 
 ul{
 	list-style-type: none;
+	padding: 0;
 }
 
 li{
 	display: inline;
-	margin: 0 15px;
+	margin: 15px;
 	text-transform: uppercase;
+	padding: 10px 0 5px 0;
 }
 
 footer{
 	clear: both;
+	margin: auto;
+	text-align: center;
 }
 
 #container{
 	width: 900px;
 	position: relative;
 	margin: auto;
-	/*border: 5px red solid;*/
 }
 
 .index{
-	margin: 30px auto 20px auto;
+	margin: 30px auto;
 	width: 700px;
-	/*padding: 0 20px;*/
 }
 
 .post{
-	margin: 15px auto;
-	padding: 15px 60px;
+	margin: 20px auto;
+	padding: 15px 40px;
 	background-color: #ddd;
 	border-radius: 5px;
 }
@@ -128,6 +134,10 @@ input[type=submit]{
 	color: #fff;
 	border: none;
 	padding: 5px;
+}
+
+textarea{
+	height: 200px;
 }
 
 .clearfix:after {
