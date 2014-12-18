@@ -101,9 +101,12 @@ li{
 footer{
 	clear: both;
 	width: 100%;
-	margin: auto;
-	text-align: center;
+	padding-right: 40px;
 	border-top: 1px solid #aaa;
+}
+
+footer ul{
+	float: right;
 }
 
 footer a{
