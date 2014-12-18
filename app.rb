@@ -116,14 +116,14 @@ end
 
 patch '/post/update/:post_id' do
 	@post = Post.find_by(id: params["post_id"])
-	if @post.user_id == session[:user_id]
+	if current_user?
 		@post.title = "#{@post.title} - UPDATED"
 		@post.description = params[:description]
 		@post.save
 		redirect('/home')
 	else
 		@errors << "You are not authorized to edit this post. Please sign in to try again."
-		redirect('/')
+		erb :login
 	end
 end
 
@@ -134,12 +134,12 @@ end
 
 delete '/post/delete/:post_id' do
 	@post = Post.find_by(id: params["post_id"])
-	if @post.user_id == session[:user_id]
+	if current_user?
 		@post.delete
 		redirect('/home')
 	else
 		@errors << "You are not authorized to delete this post. Please sign in to try again."
-		redirect('/')
+		erb :login
 	end
 end
 
@@ -157,8 +157,6 @@ end
 delete '/manage' do
 	if @current_user && params[:delete]
 		@current_user.destroy
-	else
-		@errors << "You are not authorized to make changes to this account. Please sign in to try again."
 	end
 	redirect('/')
 end
