@@ -10,6 +10,14 @@
 </head>
 
 <body>
+  <% unless @errors.empty? %>
+	  <ul>
+	    <% @errors.each do |error| %>
+	      <li><%= error %></li>
+	    <% end %>
+	  </ul>
+  <% end %>
+  
 	<header class="clearfix">
 		<img src="/logo.png" alt="site logo" id="logo">
 		<h1><a href="/">Civic Fix</a></h1>
@@ -35,12 +43,12 @@
 		<%= yield %>
 	</div>
 
-		<footer>
-			<ul>
-				<li><a href="/about">About</a></li>
-				<li><a href="/manage">Manage Your Account</a>
-			</ul>
-		</footer>
+	<footer>
+		<ul>
+			<li><a href="/about">About</a></li>
+			<li><a href="/manage">Manage Your Account</a>
+		</ul>
+	</footer>
 </body>
 
 </html>
