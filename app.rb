@@ -110,12 +110,12 @@ post '/post/new' do
 end
 
 get '/post/update/:post_id' do
-	@post_id = params["post_id"]
 	@post = Post.find_by(id: params["post_id"])
 	erb :update_post
 end
 
 patch '/post/update/:post_id' do
+	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		@post.title = "#{@post.title} - UPDATED"
 		@post.description = params[:description]
@@ -128,12 +128,12 @@ patch '/post/update/:post_id' do
 end
 
 get '/post/delete/:post_id' do
-	@post_id = params["post_id"]
 	@post = Post.find_by(id: params["post_id"])
 	erb :delete_post
 end
 
 delete '/post/delete/:post_id' do
+	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		@post.delete
 		redirect('/home')
