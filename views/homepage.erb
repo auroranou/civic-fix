@@ -7,11 +7,10 @@
 		<div class="post">
 			<div><strong>To:</strong> <%= m.mail_to %></div>
 			<div><strong>From:</strong> <%= m.mail_from %></div>
-			<div><strong>Re: <%= m.subject %></strong></div>
+			<div><strong>Re: </strong><%= m.subject %></div>
 			<div class="date"><%= m.created_at %></div>
 			<p><%= m.body %></p>
 			<hr>
-			<p>To follow up on this issue, contact:</p>
 			<div><strong><%= Organization.find_by(email: m.mail_to).org_name %></strong></div>
 			<div><span class="contact_icon">&#59172;</span>
 				<span><%= Organization.find_by(email: m.mail_to).address %></span>
