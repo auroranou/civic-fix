@@ -1,11 +1,19 @@
+/* basic styles---------------------------*/
+
 *{
 	box-sizing: border-box;
 }
 
 body{
-	background-color: #Fff;
+	background-color: #f2f2f2;
 	color: #666;
 	font-family: 'Raleway', 'Arial', sans-serif;
+}
+
+#container{
+	width: 900px;
+	position: relative;
+	margin: auto;
 }
 
 @font-face{
@@ -18,6 +26,39 @@ body{
 	src: url('../public/Entypo.ttf');
 }
 
+a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #aaa;
+}
+
+p{
+	line-height: 1.5em;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.date{
+	color: #aaa;
+}
+
+/* headers and footer --------------------*/
+
+header{
+	width: 100%;
+	height: 110px;
+	padding: 20px 40px;
+	font-size: 20px;
+	background-color: #141C22;
+}
+
 h1{
 	float: left;
 	margin: 0;
@@ -27,49 +68,12 @@ h1{
 	text-transform: uppercase;
 }
 
-a {
-	font-weight: bold;
-	text-decoration: none;
-	color: #aaa;
-}
-
 h2, a:hover{
 	color: #E4523C;
 }
 
 header a, h2 a{
 	color: #fff;
-}
-
-footer a{
-	color: #666;
-}
-
-.index h2{
-	margin: 5px 0 0 0;
-}
-
-.index:first-child p:first-letter{
-	font-size: 3em;
-	height: 0.8em;
-	display: block;
-	float: left;
-	line-height: 1em;
-	font-weight: bold;
-	color: #E4523C;
-	margin-right: 10px
-}
-
-p{
-	line-height: 1.5em;
-}
-
-header{
-	width: 100%;
-	height: 110px;
-	padding: 20px 40px;
-	font-size: 20px;
-	background-color: #141C22;
 }
 
 #logo{
@@ -102,23 +106,11 @@ footer{
 	border-top: 1px solid #aaa;
 }
 
-#container{
-	width: 900px;
-	position: relative;
-	margin: auto;
+footer a{
+	color: #666;
 }
 
-.index{
-	margin: 30px auto;
-	width: 700px;
-}
-
-.post{
-	margin: 20px auto;
-	padding: 15px 40px;
-	background-color: #ddd;
-	border-radius: 5px;
-}
+/* forms and pages -----------------------*/
 
 section{
 	width: 440px;
@@ -135,17 +127,6 @@ section{
 
 .center_sec{
 	margin: auto;
-}
-
-.date{
-	color: #aaa;
-}
-
-.new{
-	background-color: #141C22;
-	padding: 5px;
-	text-align: center;
-	margin: 20px 0;
 }
 
 form{
@@ -170,10 +151,6 @@ input[type=submit]{
 	padding: 5px;
 }
 
-input[type=checkbox]{
-	width: 20px;
-}
-
 label{
 	text-align: center;
 }
@@ -182,18 +159,42 @@ textarea{
 	height: 200px;
 }
 
-#delete{
-	background-color: #f2f2f2;
-	border: none;
-	margin: 0 auto;
-	padding-top: 0;
+/* index view ---------------------------*/
+
+.index{
+	margin: 30px auto;
+	width: 700px;
 }
 
-.about_icon{
-	font-family: "Entypo Social";
+.index h2{
+	margin: 5px 0 0 0;
+}
+
+.index:first-child p:first-letter{
 	font-size: 3em;
-	letter-spacing: 0.5em;
-	/*text-align: center;*/
+	height: 0.8em;
+	display: block;
+	float: left;
+	line-height: 1em;
+	font-weight: bold;
+	color: #E4523C;
+	margin-right: 10px
+}
+
+.post{
+	margin: 20px auto;
+	padding: 15px 40px;
+	background-color: #ddd;
+	border-radius: 5px;
+}
+
+/* user dashboard view ------------------*/
+
+.new{
+	background-color: #141C22;
+	padding: 5px;
+	text-align: center;
+	margin: 20px 0;
 }
 
 .contact_icon{
@@ -203,11 +204,24 @@ textarea{
 	text-align: center;
 }
 
-.clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
+/* manage account view -----------------*/
+
+.about_icon{
+	font-family: "Entypo Social";
+	font-size: 3em;
+	letter-spacing: 0.5em;
+	text-align: center;
+}
+
+/* delete account form -----------------*/
+
+#delete{
+	background-color: #f2f2f2;
+	border: none;
+	margin: 0 auto;
+	padding-top: 0;
+}
+
+input[type=checkbox]{
+	width: 20px;
 }
