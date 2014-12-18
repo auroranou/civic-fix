@@ -1,4 +1,6 @@
 #Civic Fix
+View the site in action [here](https://frozen-spire-4358.herokuapp.com/home).
+Note: All emails are currently set to be sent to me.
 
 ##Technologies Used
 + Ruby 2.1.4
