@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'mail'
-require 'pry'
+# require 'pry'
 
 require_relative './models/user'
 require_relative './models/post'
@@ -180,4 +180,4 @@ post '/about' do
 	).deliver!
 end
 
-binding.pry
+# binding.pry
