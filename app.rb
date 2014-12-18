@@ -81,8 +81,6 @@ get '/message/new' do
 end
 
 post '/message/new' do
-	@target_org = Organization.find_by(action: params[:action])
-
 	Mail.new(
 		to: 'auroranou@gmail.com',
 		from: params[:mail_from],
@@ -90,6 +88,7 @@ post '/message/new' do
 		body: params[:body]
 	).deliver!
 
+	@target_org = Organization.find_by(action: params[:action])
 	message = Message.create(
 		mail_to: @target_org.email,
 		mail_from: params[:mail_from], 
@@ -106,7 +105,7 @@ get '/post/new' do
 end
 
 post '/post/new' do
-	post = Post.create(title: params[:title], description: params[:description], user_id: session[:user_id].to_i)
+	post = Post.create(title: params[:title], description: params[:description], user_id: session[:user_id])
 	redirect("/home")
 end
 
@@ -117,7 +116,6 @@ get '/post/update/:post_id' do
 end
 
 patch '/post/update/:post_id' do
-	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		@post.title = "#{@post.title} - UPDATED"
 		@post.description = params[:description]
@@ -136,7 +134,6 @@ get '/post/delete/:post_id' do
 end
 
 delete '/post/delete/:post_id' do
-	@post = Post.find_by(id: params["post_id"])
 	if @post.user_id == session[:user_id]
 		@post.delete
 		redirect('/home')
