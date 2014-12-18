@@ -137,7 +137,7 @@ section{
 }
 
 form{
-	margin: 30px auto;
+	margin: 0 auto 30px auto;
 	padding: 20px;
 	background-color: #ddd;
 	border-radius: 5px;
@@ -217,7 +217,8 @@ textarea{
 	font-family: "Entypo Social";
 	font-size: 3em;
 	letter-spacing: 0.5em;
-	text-align: center;
+	border-top: 1px #aaa solid;
+	margin-right: 20px;
 }
 
 /* delete account form -----------------*/
