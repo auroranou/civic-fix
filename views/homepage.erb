@@ -1,11 +1,8 @@
 <section class="left_sec">
-
 	<div class="new">
 		<h2><a href="/message/new">Write a new message</a></h2>
 	</div>
-
 	<h2>Your sent messages:</h2>
-
 	<% @user_messages.each do |m| %>
 		<div class="post">
 			<div><strong>To:</strong> <%= m.mail_to %></div>
@@ -23,15 +20,12 @@
 			</div>
 		</div>
 	<% end %>
-
 </section>
 
 <section class="right_sec">
-
 	<div class="new">
 		<h2><a href="/post/new">Post a new PSA</a></h2>
 	</div> 
-
 	<h2>Your past posts:</h2>
 	<% @user_posts.each do |p| %>
 		<div class="post">
@@ -42,5 +36,4 @@
 			<a href="/post/delete/<%= p.id %>">Delete this post</a></p>
 		</div>
 	<% end %>
-	
 </section>
