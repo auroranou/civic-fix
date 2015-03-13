@@ -1,6 +1,7 @@
 #Civic Fix
-View the site in action [here](https://frozen-spire-4358.herokuapp.com/home).
-Note: All emails are currently set to be sent to me.
+This project is inspired by the time a streetlight went out on my intersection for two weeks. Civic Fix is a 311-type service that allows users in DC to email government agencies and non-profits as well as post public service announcements. View the site in action [here](https://frozen-spire-4358.herokuapp.com/home).
+
+Note: All emails are currently sent to me because spamming the government is probably illegal.
 
 ##Technologies Used
 + Ruby 2.1.4
@@ -20,7 +21,7 @@ Note: All emails are currently set to be sent to me.
 + User can contact site admin via email
 
 ##Entity Relationships
-![entity relationship diagrams for civic fix](https://github.com/auroranou/project_one/blob/master/civicfix_erds.png)
+![entity relationship diagrams for civic fix](https://github.com/auroranou/project_one/blob/master/erds.png)
 
 ##Installation
 For the initial installation:
